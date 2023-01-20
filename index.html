@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Indra Purwa laksana" />
+    <meta name="generator" content="Indra Purwa laksana" />
+    <title>Hitung Zakat</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/pricing/" />
+    <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: solid rgba(0, 0, 0, 0.15);
+            border-width: 1px 0;
+            box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+                inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -0.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-3">
+        <header>
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+                <a href="index.html" class="d-flex align-items-center text-dark text-decoration-none">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94"
+                        role="img">
+                        <title>Bootstrap</title>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                            fill="currentColor"></path>
+                    </svg> -->
+                    <h1 class="fs-4">Aplikasi Hitung Zakat</h1>
+                </a>
+
+                <!-- <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                    <a class="me-3 py-2 text-dark text-decoration-none fw-bold" href="#">Hitung Zakat</a>
+                </nav> -->
+            </div>
+
+            <!-- <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal">Pricing</h1>
+            <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+        </div> -->
+        </header>
+
+        <main>
+            <form>
+                <select id="select_pilihan" class="form-select" aria-label="Default select example">
+                    <option selected>Pilihan Zakat</option>
+                    <option value="1">Zakat Fitrah</option>
+                    <option value="2">Zakat Profesi</option>
+                    <option value="3">Zakat Maal</option>
+                </select>
+            </form>
+            <hr />
+            <form id="form_zakat_fitrah">
+                <h3>Zakat Fitrah</h3>
+                <div class="mt-2 mb-2 p-2" style="border: 1px solid grey;">
+                    Besaran zakat fitrah di Indonesia berdasarkan ketetapan dari Badan Amil Zakat Nasional (BAZNAS) adalah 2,5 kg atau 3,5 liter beras. Bisa dibayarkan dengan beras yang bias kita makan atau juga dikonversikan dengan uang tunai. Rumus pembayaran zakat fitrah per jiwa dengan pembayaran menggunakan beras dan berupa uang adalah:
+                    <br/><b>
+                        3,1 liter x jumlah anggota keluarga = Besar zakat fitrah (berupa beras)<br/>
+                        Jika dikonversikan dengan uang tunai, maka rumusnya:<br/>
+                        3,1 liter x 1 liter harga beras = Jumlah uang yang harus dikeluarkan untuk zakat fitrah
+                    </b>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Harga Beras per Liter</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input id="input_zf_harga" type="number" value="" class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Jumlah Beras (satuan liter)</label>
+                    <div class="input-group mb-3">
+                        <input id="input_zf_beras"  type="number" disabled class="form-control" placeholder="0" aria-label="0" value="3.1" readonly aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">liter</span>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-primary" onclick="hitungZakatFitrah()">Hitung Zakat</button>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Jumlah Zakat Yang Harus Dibayarkan</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" id="input_zf_zakatharusdibayar" disabled class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </form>
+
+            <form id="form_zakat_profesi">
+                <h3>Zakat Profesi</h3>
+                <div class="mt-2 mb-2 p-2" style="border: 1px solid grey;">
+                    Zakat penghasilan atau zakat profesi adalah bagian dari zakat maal yang wajib dikeluarkan atas harta yang berasal dari pendapatan/penghasilan rutin dari pekerjaan yang tidak melanggar Syariah. 
+                    Nishab zakat penghasilan pada tahun 2023 adalah senilai 85 gram emas atau stara dengan Rp. 81.945.667 per tahun. Atau Rp. 6.828.806 per bulan. Adapun kadar zakat yang wajib dikeluarkan adalah 2,5 % dari penghasilan tersebut. 
+                    Jika penghasilan dalam 1 bulan tidak mencapai nishab, maka hasil pendapatan selama 1 tahun dikumpulkan atau dihitung, kemudian zakat ditunaikan jika penghasilan bersihnya sudah cukup nishab.
+                    <br/><b>Rumus menghitung zakat profesi<br/>
+                        2,5% x jumlah penghasilan dalam 1 bulan
+                    </b>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Penghasilan/Gaji Saya per Bulan</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" id="input_zp_gaji" class="form-control" placeholder="0" aria-label="0" value="" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Penghasilan Lain-Lain Saya per Bulan</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" id="input_zp_lain" class="form-control" placeholder="0" aria-label="0" value="" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Hutang/Cicilan Saya untuk Kebutuhan Pokok 1)</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" id="input_zp_cicilan" class="form-control" placeholder="0" aria-label="0" value="" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nishab Zakat (emas)</label>
+                    <div class="input-group mb-3">
+                        <input type="number" id="input_zp_emas" class="form-control" placeholder="0" value="85" disabled readonly aria-label="0" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">gram</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Harga Emas Saat Ini (per gram)</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" id="input_zp_hargaemas" class="form-control" placeholder="0" value="" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" onclick="hitungZakatProfesi()" class="btn btn-primary">Hitung Zakat</button>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Jumlah Penghasilan per Bulan</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" id="input_zp_penghasilanperbulan" class="form-control" placeholder="0" disabled aria-label="0" readonly aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Besarnya Nishab Zakat Penghasilan per Bulan</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" id="input_zp_nishab" class="form-control" placeholder="0" aria-label="0" disabled aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Apakah Saya Wajib Membayar Zakat Penghasilan?</label>
+                    <input type="text" id="input_zp_apawajib" disabled class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Jumlah Yang Saya Harus Bayarkan per Bulan</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" id="input_zp_zakatharusdibayar" disabled class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                
+            </form>
+
+            <form id="form_zakat_maal">
+                <h3>Zakat Maal</h3>
+                <div class="mt-2 mb-2 p-2" style="border: 1px solid grey;">
+                    Zakat maal harus sudah mencapai nishab (batas minimum) dan terbebas dari hutang serta kepemilikan telah mencapai 1 tahun (haul). Nishab zakat maal sebesar 85 gram emas. Kadar zakatnya senilai 2,5%. Standar harga emas yang digunakan untuk 1 gram nya adalah Rp. 938.009. sedangkan nishab yang digunakan adalah sebesar 85 gram emas.
+                    <br/><b>Rumus:<br/>
+                    85 gr x harga emas per gram = nisab emas<br/>
+                    Jumlah emas simpanan x harga emas per gram = menentukan nisab<br/>
+                    Kadar zakat emas yang harus dibayar = 2,5% x jumlah capaian nisab
+                    </b>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nilai emas, perak, dan/atau permata</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" value="" id="input_zm_emaspribadi" class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Uang tunai, tabungan, deposito</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" value="" id="input_zm_uang" class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Kendaraan, rumah, aset lain</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" value="" id="input_zm_kendaraan" class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Jumlah hutang/cicilan (optional)</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" value="" id="input_zm_hutang" class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nishab Zakat (emas)</label>
+                    <div class="input-group mb-3">
+                        <input type="number" id="input_zm_emas" class="form-control" placeholder="0" value="85" disabled readonly aria-label="0" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">gram</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Harga Emas Saat Ini (per gram)</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="number" id="input_zm_hargaemas" class="form-control" placeholder="0" value="" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" onclick="hitungZakatMaal()" class="btn btn-primary">Hitung Zakat</button>
+                  </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Jumlah Harta</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" id="input_zm_jumlahharta" class="form-control" placeholder="0" aria-label="0" disabled aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Besarnya Nishab Zakat</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" id="input_zm_nishab" class="form-control" placeholder="0" aria-label="0" disabled aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Apakah Saya Wajib Membayar Zakat?</label>
+                    <input type="text" id="input_zm_apawajib" disabled class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Jumlah Zakat Yang Harus Dibayarkan</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                        <input type="text" id="input_zm_zakatharusdibayar" disabled class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="./assets/jquery-3.6.3.min.js"></script>
+    <script src="./assets/dist/js/bootstrap.js"></script>
+    <script>
+        $(function () {
+            $('#form_zakat_fitrah').addClass("visually-hidden");
+            $('#form_zakat_profesi').addClass("visually-hidden");
+            $('#form_zakat_maal').addClass("visually-hidden");
+        });
+        $('#select_pilihan').on('change', function (e) {
+            $('#form_zakat_fitrah').addClass("visually-hidden");
+            $('#form_zakat_profesi').addClass("visually-hidden");
+            $('#form_zakat_maal').addClass("visually-hidden");
+            let pilihan = $('#select_pilihan').val();
+            if (pilihan == "1") {
+                $('#form_zakat_fitrah').removeClass("visually-hidden");
+                document.getElementById("form_zakat_fitrah").reset();
+            }else if (pilihan == "2") {
+                $('#form_zakat_profesi').removeClass("visually-hidden");
+                document.getElementById("form_zakat_profesi").reset();
+            }else if (pilihan == "3") {
+                $('#form_zakat_maal').removeClass("visually-hidden");
+                document.getElementById("form_zakat_maal").reset();
+            }
+        });
+        function formatMoney(money) {
+            return new Intl.NumberFormat(['id']).format(money)
+        }
+        function hitungZakatFitrah() {
+            let harga = Number($('#input_zf_harga').val());
+            let beras = Number($('#input_zf_beras').val());
+            let jumlah = harga*beras
+            $('#input_zf_zakatharusdibayar').val(formatMoney(jumlah));
+            // $('#container_hasil_zf').html(`<p style="text-align: center;font-weight: bold;">Jumlah uang yang harus dikeluarkan untuk zakat fitrah adalah: </p>
+            // <h3 style="text-align:center">Rp. `+formatMoney(jumlah)+`</h3>`);
+        }
+        function hitungZakatProfesi() {
+            let gaji = Number($('#input_zp_gaji').val());
+            let lain = Number($('#input_zp_lain').val());
+            let cicilan = Number($('#input_zp_cicilan').val());
+            let penghasilanperbulan = gaji+lain-cicilan
+            $('#input_zp_penghasilanperbulan').val(formatMoney(penghasilanperbulan));
+
+            let emas = Number($('#input_zp_emas').val());
+            let hargaemas = Number($('#input_zp_hargaemas').val());
+            let besarnishab = (emas*hargaemas)/12
+            $('#input_zp_nishab').val(formatMoney(besarnishab));
+
+            let zakatwajib=0
+            if (penghasilanperbulan >= besarnishab) {
+                $('#input_zp_apawajib').val("WAJIB");
+                zakatwajib = penghasilanperbulan*2.5/100;
+            }else{
+                $('#input_zp_apawajib').val("TIDAK");
+            }
+            console.log(penghasilanperbulan);
+            console.log(zakatwajib);
+            $('#input_zp_zakatharusdibayar').val(formatMoney(zakatwajib));
+        }
+        function hitungZakatMaal() {
+            let emaspribadi = Number($('#input_zm_emaspribadi').val());
+            let uang = Number($('#input_zm_uang').val());
+            let kendaraan = Number($('#input_zm_kendaraan').val());
+            let hutang = Number($('#input_zm_hutang').val());
+            let jumlahharta = emaspribadi+uang+kendaraan-hutang
+            $('#input_zm_jumlahharta').val(formatMoney(jumlahharta));
+
+            let emas = Number($('#input_zm_emas').val());
+            let hargaemas = Number($('#input_zm_hargaemas').val());
+            let besarnishab = (emas*hargaemas)
+            console.log(emas);
+            console.log(hargaemas);
+            console.log(besarnishab);
+            $('#input_zm_nishab').val(formatMoney(besarnishab));
+
+            let zakatwajib=0
+            if (jumlahharta >= besarnishab) {
+                $('#input_zm_apawajib').val("WAJIB");
+                zakatwajib = jumlahharta*2.5/100;
+            } else {
+                $('#input_zm_apawajib').val("TIDAK");
+                
+            }
+            $('#input_zm_zakatharusdibayar').val(formatMoney(zakatwajib));
+
+        }
+    </script>
+</body>
+
+</html>
